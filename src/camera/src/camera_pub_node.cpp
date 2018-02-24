@@ -25,8 +25,7 @@ int main(int argc, char *argv[]) {
     ros::Rate loop_rate(30);
     char index[7]; 
     std::cout << img_cap.get(CV_CAP_PROP_FPS) << std::endl; 
-    while (ros::ok()) {// && num <= 400) {
-    //while(1) {
+    while (ros::ok()) {
         img_cap >> img;
         //std::cout << "channels: " << img.channels() << std::endl;
         if (!img.empty()) {

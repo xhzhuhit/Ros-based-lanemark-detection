@@ -23,8 +23,10 @@ void image_callback(const sensor_msgs::ImageConstPtr& msg) {
                       //<< image.at<int>[i][j][2] << std::endl; 
         }
     }  
-    std::cout << "channels lane1: " << lanemarks.channels() << std::endl; 
-    cv::cvtColor(lanemarks, lanemarks, cv::COLOR_GRAY2BGR); 
+    cv::blur(lanemarks, lanemarks, cv::Size(3, 3));
+    cv::Canny(lanemarks, lanemarks, 3, 9, 3);
+    std::cout << "channels lane: " << lanemarks.channels() << std::endl; 
+    //cv::cvtColor(lanemarks, lanemarks, cv::COLOR_GRAY2BGR); 
     std::cout << "channels lane2: " << lanemarks.channels() << std::endl;
     cv::imshow("zhuxiaohui", lanemarks);
     //cv::split(image, channels);
